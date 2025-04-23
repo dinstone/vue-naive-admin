@@ -7,8 +7,8 @@
  **********************************/
 
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import { basicRoutes } from './basic-routes'
 import { setupRouterGuards } from './guards'
+import { basicRoutes } from './routes.js'
 
 export const router = createRouter({
   history:

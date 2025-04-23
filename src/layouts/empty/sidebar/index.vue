@@ -20,8 +20,4 @@
 
 <script setup>
 import { MenuCollapse, SettingMenu, SideMenu, UserAvatar } from '@/layouts/components'
-
-function handleLinkClick(link) {
-  window.open(link)
-}
 </script>

@@ -13,19 +13,20 @@
       trigger="click"
       @select="handleMenuSelect"
     >
-      <i class="i-fe:settings cursor-pointer text-20" />
+      <i class="i-fe:settings cursor-pointer text-22" />
     </n-dropdown>
-  </div>
 
-  <ThemeLayout ref="themeLayoutRef" />
+    <ThemeLayout ref="themeLayoutRef" />
+    <AboutDialog  ref="aboutDialogRef" />
+  </div>
 </template>
 
 <script setup>
-import { ThemeLayout } from '@/layouts/components'
+import { AboutDialog, ThemeLayout } from '@/components'
 import { isExternal } from '@/utils'
 
-// const roleSelectRef = ref(null)
 const themeLayoutRef = ref(null)
+const aboutDialogRef = ref(null)
 
 const router = useRouter()
 
@@ -47,6 +48,10 @@ function handleMenuSelect(key, item) {
   else {
     if (key === 'theme') {
       themeLayoutRef.value.open()
+      return
+    }
+    if (key === 'about') {
+      aboutDialogRef.value.show()
       return
     }
 
@@ -72,7 +77,6 @@ const staticMenus = [
   {
     label: '关于系统',
     key: 'about',
-    path: '/',
   },
 ]
 </script>

@@ -13,11 +13,12 @@
   <div class="mb-10">
     <UserAvatar />
   </div>
+  <SettingMenu />
   <MenuCollapse />
 </template>
 
 <script setup>
-import { MenuCollapse, SideLogo, SideMenu, UserAvatar } from '@/layouts/components'
+import { MenuCollapse, SideLogo, SettingMenu, SideMenu, UserAvatar } from '@/layouts/components'
 import { useAppStore } from '@/store'
 
 const appStore = useAppStore()

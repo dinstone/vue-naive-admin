@@ -43,11 +43,11 @@
       <slot />
     </AppCard>
 
-    <slot name="footer">
-      <AppCard v-if="showFooter" class="flex-shrink-0 py-12">
+    <AppCard v-if="showFooter" class="flex-shrink-0 py-12">
+      <slot name="footer">
         <TheFooter />
-      </AppCard>
-    </slot>
+      </slot>
+    </AppCard>
   </main>
 </template>
 

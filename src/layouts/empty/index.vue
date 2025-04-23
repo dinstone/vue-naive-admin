@@ -1,16 +1,9 @@
-<!--------------------------------
- - @Author: Ronnie Zhang
- - @LastEditor: Ronnie Zhang
- - @LastEditTime: 2023/12/05 21:24:32
- - @Email: zclzone@outlook.com
- - Copyright © 2023 Ronnie Zhang(大脸怪) | https://isme.top
- --------------------------------->
-
 <template>
   <div class="wh-full flex flex-col">
+
     <AppHeader class="h-60 flex-shrink-0" />
 
-    <div class="flex flex-1">
+    <div class="flex flex-1 overflow-hidden">
       <aside
         class="flex-col flex-shrink-0 transition-width-300"
         :class="appStore.collapsed ? 'w-60' : 'w-180'"
@@ -19,7 +12,9 @@
         <SideBar />
       </aside>
 
-      <slot class="flex-1" />
+      <article class="w-full flex-col flex-1 overflow-y-auto">
+        <slot />
+      </article>
     </div>
   </div>
 </template>
@@ -35,5 +30,13 @@ const appStore = useAppStore()
 <style>
 .collapsed {
   width: 64px;
+}
+
+#app-main {
+  height: calc(100vh - 60px); /* 减去头部的高度 */
+}
+
+#app-main article {
+  height: 100%;
 }
 </style>

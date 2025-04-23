@@ -8,7 +8,7 @@
 
 <template>
   <AppCard class="flex items-center px-12" border-b="1px solid light_border dark:dark_border">
-    <!-- <div class="w-45 flex-shrink-0" /> -->
+
     <HeaderLogo border-b="1px solid light_border dark:dark_border" />
 
     <AppTab class="w-0 flex-1 px-12" />

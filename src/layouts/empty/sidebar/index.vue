@@ -15,15 +15,6 @@
 
   <SettingMenu />
 
-  <div class="f-c-c cursor-pointer rounded-4 p-6 text-22 transition-all-300">
-    <n-tooltip trigger="hover" placement="left">
-      <template #trigger>
-        <i class="i-fe:github cursor-pointer" @click="handleLinkClick('https://github.com/zclzone/vue-naive-admin/tree/2.x')" />
-      </template>
-      源码工程
-    </n-tooltip>
-  </div>
-
   <MenuCollapse />
 </template>
 

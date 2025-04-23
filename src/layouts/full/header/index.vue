@@ -23,13 +23,11 @@
       @click="handleLinkClick('https://gitee.com/isme-admin/vue-naive-admin/tree/2.x')"
       />
 
-      <BeginnerGuide />
-
       <Fullscreen />
 
-      <ThemeToggle />
+      <BeginnerGuide />
 
-      <ThemeColor class="mr-16" />
+      <SettingMenu class="mr-16" />
 
       <UserAvatar />
     </div>
@@ -37,8 +35,7 @@
 </template>
 
 <script setup>
-import { ThemeToggle, ThemeColor } from '@/components'
-import { BeginnerGuide, BreadCrumb, Fullscreen, MenuCollapse, UserAvatar } from '@/layouts/components'
+import { BeginnerGuide, BreadCrumb,SettingMenu, Fullscreen, MenuCollapse, UserAvatar } from '@/layouts/components'
 
 function handleLinkClick(link) {
   window.open(link)

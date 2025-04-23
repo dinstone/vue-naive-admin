@@ -29,6 +29,7 @@
           </slot>
 
           <div class="mr-12 h-16 w-4 rounded-l-2 bg-primary" />
+
           <h2 class="font-normal">
             {{ title ?? route.meta?.title }}
           </h2>
@@ -37,6 +38,7 @@
         <slot name="action" />
       </template>
     </AppCard>
+
     <AppCard class="cus-scroll m-12 h-0 flex-1 rounded-8 p-24" bordered>
       <slot />
     </AppCard>

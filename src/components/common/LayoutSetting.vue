@@ -10,8 +10,8 @@
   <div>
     <n-tooltip trigger="hover" placement="left">
       <template #trigger>
-        <div id="layout-setting" class="f-c-c rounded-4 bg-primary p-8" @click="modalRef.open()">
-          <i class="i-fe:settings cursor-pointer bg-white text-20" />
+        <div id="layout-setting" class="f-c-c rounded-4 p-8" @click="modalRef.open()">
+          <i class="i-fe:settings cursor-pointer text-20" />
         </div>
       </template>
       布局设置
@@ -72,8 +72,16 @@
           </n-button>
         </div>
         <div class="flex-col cursor-pointer justify-center" @click="appStore.setLayout('empty')">
-          <div class="flex">
-            <n-skeleton :width="104" :height="60" />
+          <div class="flex flex-col">
+            <div class="mb-4">
+              <n-skeleton :width="100" :height="10" />
+            </div>
+            <div class="flex">
+              <n-skeleton :width="16" :height="46" />
+              <div class="ml-4">
+                <n-skeleton :width="80" :height="46" />
+              </div>
+            </div>
           </div>
           <n-button
             class="mt-12"
@@ -81,7 +89,7 @@
             :type="appStore.layout === 'empty' ? 'primary' : ''"
             ghost
           >
-            空白
+            传统
           </n-button>
         </div>
       </n-space>

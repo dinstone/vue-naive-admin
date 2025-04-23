@@ -4,7 +4,7 @@
       <template #trigger>
         <n-color-picker
           id="theme-setting"
-          class="h-32 w-32"
+          class="h-18 w-18"
           :value="appStore.primaryColor"
           :swatches="primaryColors"
           :on-update:value="(v) => appStore.setPrimaryColor(v)"

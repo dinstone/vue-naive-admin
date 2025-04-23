@@ -1,6 +1,5 @@
 <template>
   <div class="wh-full flex flex-col">
-
     <AppHeader class="h-60 flex-shrink-0" />
 
     <div class="flex flex-1 overflow-hidden">
@@ -26,17 +25,3 @@ import SideBar from './sidebar/index.vue'
 
 const appStore = useAppStore()
 </script>
-
-<style>
-.collapsed {
-  width: 64px;
-}
-
-#app-main {
-  height: calc(100vh - 60px); /* 减去头部的高度 */
-}
-
-#app-main article {
-  height: 100%;
-}
-</style>

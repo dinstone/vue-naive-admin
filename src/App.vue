@@ -42,7 +42,7 @@ function getLayout(name) {
 
 const appStore = useAppStore()
 if (appStore.layout === 'default') {
-  appStore.setLayout('')
+  appStore.setLayout('classic')
 }
 
 const route = useRoute()

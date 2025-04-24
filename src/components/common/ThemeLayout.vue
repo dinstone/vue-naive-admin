@@ -77,7 +77,7 @@
               全面
             </n-button>
           </div>
-          <div class="flex-col cursor-pointer justify-center" @click="appStore.setLayout('empty')">
+          <div class="flex-col cursor-pointer justify-center" @click="appStore.setLayout('classic')">
             <div class="flex flex-col">
               <div class="mb-4">
                 <n-skeleton :width="100" :height="10" />
@@ -92,10 +92,10 @@
             <n-button
               class="mt-12"
               size="small"
-              :type="appStore.layout === 'empty' ? 'primary' : ''"
+              :type="appStore.layout === 'classic' ? 'primary' : ''"
               ghost
             >
-              传统
+              经典
             </n-button>
           </div>
         </n-space>
@@ -104,7 +104,6 @@
         </p>
       </n-card>
     </n-space>
-
   </MeModal>
 </template>
 

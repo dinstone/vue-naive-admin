@@ -13,7 +13,7 @@ import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    collapsed: false,
+    collapsed: true,
     isDark: useDark(),
     layout: defaultLayout,
     primaryColor: defaultPrimaryColor,

@@ -16,7 +16,7 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig, loadEnv } from 'vite'
 import removeNoMatch from 'vite-plugin-router-warn'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import { pluginIcons, pluginPagePathes } from './build/plugin-isme'
+import { pluginIcons, pluginPagePaths } from './build/plugin-isme'
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd())
@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
         dts: false,
       }),
       // 自定义插件，用于生成页面文件的path，并添加到虚拟模块
-      pluginPagePathes(),
+      pluginPagePaths(),
       // 自定义插件，用于生成自定义icon，并添加到虚拟模块
       pluginIcons(),
       // 移除非必要的vue-router动态路由警告: No match found for location with path

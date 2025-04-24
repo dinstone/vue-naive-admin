@@ -6,7 +6,7 @@
  * Copyright © 2023 Ronnie Zhang(大脸怪) | https://isme.top
  **********************************/
 
-export const defaultLayout = 'normal'
+export const defaultLayout = 'classic'
 
 export const defaultPrimaryColor = '#316C72'
 

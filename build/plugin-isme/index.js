@@ -7,4 +7,4 @@
  **********************************/
 
 export { pluginIcons } from './icons'
-export { pluginPagePathes } from './page-pathes'
+export { pluginPagePaths } from './paths'

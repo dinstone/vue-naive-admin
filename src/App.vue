@@ -30,21 +30,23 @@
 import { useAppStore, useTabStore } from '@/store'
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 
-const layouts = new Map()
+// 利用map将加载过的layout缓存起来，防止重新加载layout导致页面闪烁
+const layoutMap = new Map()
 function getLayout(name) {
-  // 利用map将加载过的layout缓存起来，防止重新加载layout导致页面闪烁
-  if (layouts.get(name))
-    return layouts.get(name)
+  if (layoutMap.get(name))
+    return layoutMap.get(name)
   const layout = markRaw(defineAsyncComponent(() => import(`@/layouts/${name}/index.vue`)))
-  layouts.set(name, layout)
+  layoutMap.set(name, layout)
   return layout
 }
 
+// 设置默认布局
 const appStore = useAppStore()
 if (appStore.layout === 'default') {
   appStore.setLayout('classic')
 }
 
+// 根据当前路由计算布局，如果路由没有layout，则使用默认布局
 const route = useRoute()
 const Layout = computed(() => {
   if (!route.matched?.length)
@@ -57,6 +59,7 @@ const keepAliveNames = computed(() => {
   return tabStore.tabs.filter(item => item.keepAlive).map(item => item.name)
 })
 
+// 监听主题色并动态更新
 watchEffect(() => {
   appStore.setThemeColor(appStore.primaryColor, appStore.isDark)
 })

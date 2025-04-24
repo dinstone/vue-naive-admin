@@ -162,7 +162,7 @@
 import { MeModal } from '@/components'
 import { useForm, useModal } from '@/composables'
 import icons from 'isme:icons'
-import pagePathes from 'isme:page-pathes'
+import pagePathes from 'isme:page-paths'
 import api from '../api'
 import QuestionLabel from './QuestionLabel.vue'
 

@@ -7,18 +7,17 @@
  --------------------------------->
 
 <template>
-  <div class="f-c-c cursor-pointer rounded-4 p-6 text-22 transition-all-300">
+  <div class="f-c-c cursor-pointer rounded-4 p-6 text-20 transition-all-300 auto-bg-hover">
     <n-dropdown
       :options="staticMenus"
       trigger="click"
       @select="handleMenuSelect"
     >
-      <i class="i-fe:settings cursor-pointer text-22" />
+      <i class="i-fe:settings cursor-pointer text-20" />
     </n-dropdown>
-
-    <ThemeLayout ref="themeLayoutRef" />
-    <AboutDialog  ref="aboutDialogRef" />
   </div>
+  <ThemeLayout ref="themeLayoutRef" />
+  <AboutDialog ref="aboutDialogRef" />
 </template>
 
 <script setup>

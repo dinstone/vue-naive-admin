@@ -37,4 +37,13 @@ export const basicRoutes = [
       layout: 'empty',
     },
   },
+
+  {
+    name: 'stock',
+    path: '/stock',
+    component: () => import('@/views/stock/index.vue'),
+    meta: {
+      title: '股票投资',
+    },
+  },
 ]

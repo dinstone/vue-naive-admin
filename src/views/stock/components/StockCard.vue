@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <n-spin size="small" :show="treeLoading">
     <n-space vertical :size="12">
       <div class="flex">
         <n-input v-model:value="pattern" placeholder="搜索(股票编码、名称)" clearable />
@@ -13,7 +13,7 @@
         :show-irrelevant-nodes="false"
         :pattern="pattern"
         :data="treeData"
-        :selected-keys="[currentMenu?.code]"
+        :selected-keys="[currentStock?.code]"
         :render-prefix="renderPrefix"
         :render-label="renderLabel"
         :render-suffix="renderSuffix"
@@ -26,27 +26,34 @@
       />
     </n-space>
 
-    <StockEditer ref="modalRef" :menus="treeData" @refresh="(data) => emit('refresh', data)" />
-  </div>
+    <StockEdit ref="modalRef" @refresh="initStockTree" />
+  </n-spin>
 </template>
 
 <script setup>
 import { NButton } from 'naive-ui'
 import { withModifiers } from 'vue'
 import api from '../api'
-import StockEditer from './StockEdit.vue'
+import StockEdit from './StockEdit.vue'
 
 defineProps({
-  treeData: {
-    type: Array,
-    default: () => [],
-  },
-  currentMenu: {
+  currentStock: {
     type: Object,
     default: () => null,
   },
 })
-const emit = defineEmits(['refresh', 'update:currentMenu'])
+
+const emit = defineEmits(['refresh', 'update:currentStock'])
+
+const treeData = ref([])
+const treeLoading = ref(false)
+async function initStockTree() {
+  treeLoading.value = true
+  const res = await api.getStcoks()
+  treeData.value = res?.data || []
+  treeLoading.value = false
+}
+initStockTree()
 
 const pattern = ref('')
 function searchFilter(pattern, node) {
@@ -83,10 +90,11 @@ function handleDelete(item) {
     async confirm() {
       try {
         $message.loading('正在删除', { key: 'deleteMenu' })
-        await api.deletePermission(item.code)
+        await api.deleteStock(item.code)
         $message.success('删除成功', { key: 'deleteMenu' })
         emit('refresh')
-        emit('update:currentMenu', null)
+        emit('update:currentStock', null)
+        initStockTree()
       }
       catch (error) {
         console.error(error)
@@ -97,7 +105,7 @@ function handleDelete(item) {
 }
 
 function onSelect(keys, option, { action, node }) {
-  emit('update:currentMenu', action === 'select' ? node : null)
+  emit('update:currentStock', action === 'select' ? node : null)
 }
 
 function renderPrefix({ option }) {

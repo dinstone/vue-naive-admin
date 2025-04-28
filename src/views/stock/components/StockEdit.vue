@@ -8,13 +8,13 @@
       :model="modalForm"
     >
       <n-grid :cols="24" :x-gap="24">
-        <n-form-item-gi :span="12" path="name" :rule="required">
+        <n-form-item-gi :span="12" path="name" :rule="rules.required">
           <template #label>
             <QuestionLabel label="名称" content="股票全称" />
           </template>
           <n-input v-model:value="modalForm.name" />
         </n-form-item-gi>
-        <n-form-item-gi :span="12" path="code" :rule="required">
+        <n-form-item-gi :span="12" path="code" :rule="rules.required">
           <template #label>
             <QuestionLabel label="编码" content="股票编码不可修改" />
           </template>
@@ -49,14 +49,8 @@ const moneyOptions = [
   { label: '美元', value: '美元' },
 ]
 
-const required = {
-  required: true,
-  message: '此为必填项',
-  trigger: ['blur', 'change'],
-}
-
-const defaultForm = { enable: true, show: true, layout: '' }
-const [modalFormRef, modalForm, validation] = useForm()
+const defaultForm = { enable: true, show: true, layout: '', amount: 0 }
+const [modalFormRef, modalForm, validation, rules] = useForm()
 const [modalRef, okLoading] = useModal()
 
 const modalAction = ref('')

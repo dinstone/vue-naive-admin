@@ -92,8 +92,8 @@
 </template>
 
 <script setup>
-import { MeCrud } from '@/components'
 import { NButton, NSwitch } from 'naive-ui'
+import { MeCrud } from '@/components'
 import api from './api'
 import MenuTree from './components/MenuTree.vue'
 import ResAddOrEdit from './components/ResAddOrEdit.vue'
@@ -242,6 +242,7 @@ async function handleEnable(item) {
   try {
     item.enableLoading = true
     await api.savePermission(item.id, {
+      id: item.id,
       enable: !item.enable,
     })
     $message.success('操作成功')

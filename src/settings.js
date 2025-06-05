@@ -26,7 +26,7 @@ export const basePermissions = [{
   code: 'stock',
   name: '股票持仓',
   type: 'MENU',
-  icon: 'i-fe:external-link',
+  icon: 'i-fe:trending-up',
   order: 1,
   enable: true,
   show: true,

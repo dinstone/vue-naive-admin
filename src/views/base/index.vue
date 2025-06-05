@@ -116,7 +116,9 @@ async function handleLogin() {
   $message.loading('登录中...', { key: 'login' })
   await sleep(2000)
   $message.error('登录失败', { key: 'login' })
-  await sleep(500)
+  loading.value = false
+  await sleep(5000)
+  loading.value = true
   $message.loading('正在尝试重新登录...', { key: 'login' })
   await sleep(2000)
   $message.success('登录成功', { key: 'login' })

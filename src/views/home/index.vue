@@ -16,7 +16,7 @@
             <span class="text-20 opacity-80">
               Hello, {{ userStore.nickName ?? userStore.username }}
             </span>
-            <span class="mt-4 opacity-50">当前角色：{{ userStore.currentRole?.name }}</span>
+            <span class="mt-4 opacity-50">当前角色：{{ userStore.userId }}</span>
           </div>
         </div>
 
@@ -159,13 +159,13 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/store'
 import { BarChart, LineChart, PieChart } from 'echarts/charts'
 import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components'
 import * as echarts from 'echarts/core'
 import { UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
 import VChart from 'vue-echarts'
+import { useUserStore } from '@/store'
 
 const userStore = useUserStore()
 

@@ -20,7 +20,7 @@
       v-model:query-items="queryItems"
       :scroll-x="1200"
       :columns="columns"
-      :get-data="api.read"
+      :get-data="api.search"
     >
       <MeQueryItem label="用户名" :label-width="50">
         <n-input
@@ -110,11 +110,11 @@
 </template>
 
 <script setup>
+import { NAvatar, NButton, NSwitch, NTag } from 'naive-ui'
 import { MeCrud, MeModal, MeQueryItem } from '@/components'
 import { useCrud } from '@/composables'
 import { withPermission } from '@/directives'
 import { formatDateTime } from '@/utils'
-import { NAvatar, NButton, NSwitch, NTag } from 'naive-ui'
 import api from './api'
 
 defineOptions({ name: 'UserMgt' })
@@ -182,13 +182,6 @@ const columns = [
       return '暂无角色'
     },
   },
-  {
-    title: '性别',
-    key: 'gender',
-    width: 80,
-    render: ({ gender }) => genders.find(item => gender === item.value)?.label ?? '',
-  },
-  { title: '邮箱', key: 'email', width: 150, ellipsis: { tooltip: true } },
   {
     title: '创建时间',
     key: 'createDate',

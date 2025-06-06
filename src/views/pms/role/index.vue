@@ -20,7 +20,7 @@
       v-model:query-items="queryItems"
       :scroll-x="1200"
       :columns="columns"
-      :get-data="api.read"
+      :get-data="api.search"
     >
       <MeQueryItem label="角色名" :label-width="50">
         <n-input v-model:value="queryItems.name" type="text" placeholder="请输入角色名" clearable />
@@ -75,7 +75,7 @@
             :checked-keys="modalForm.permissionIds"
             :on-update:checked-keys="(keys) => (modalForm.permissionIds = keys)"
 
-            default-expand-all checkable check-on-click
+            checkable check-on-click default-expand-all
             class="cus-scroll max-h-200 w-full"
           />
         </n-form-item>
@@ -95,14 +95,12 @@
 </template>
 
 <script setup>
+import { NButton, NSwitch } from 'naive-ui'
 import { MeCrud, MeModal, MeQueryItem } from '@/components'
 import { useCrud } from '@/composables'
-import { NButton, NSwitch } from 'naive-ui'
 import api from './api'
 
 defineOptions({ name: 'RoleMgt' })
-
-const router = useRouter()
 
 const $table = ref(null)
 /** QueryBar筛选参数（可选） */
@@ -158,20 +156,6 @@ const columns = [
           {
             size: 'small',
             type: 'primary',
-            secondary: true,
-            onClick: () =>
-              router.push({ path: `/pms/role/user/${row.id}`, query: { roleName: row.name } }),
-          },
-          {
-            default: () => '分配用户',
-            icon: () => h('i', { class: 'i-fe:user-plus text-14' }),
-          },
-        ),
-        h(
-          NButton,
-          {
-            size: 'small',
-            type: 'primary',
             style: 'margin-left: 12px;',
             disabled: row.code === 'SUPER_ADMIN',
             onClick: () => handleEdit(row),
@@ -216,5 +200,5 @@ async function handleEnable(row) {
 }
 
 const permissionTree = ref([])
-api.getAllPermissionTree().then(({ data = [] }) => (permissionTree.value = data))
+api.getAllPermTree().then(({ data = [] }) => (permissionTree.value = data))
 </script>
